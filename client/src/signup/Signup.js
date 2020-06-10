@@ -3,17 +3,14 @@ import classes from "./Signup.module.css";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Error from "../signInError/SignInError";
+import axios from "axios";
 /* NEED TO COME BACK TO THIS COMPONENT AND FIX THAT WHEN THE FORM IS SUBMITTED IT SHOULDNT TAKE YOU BACK TO THE LOGIN SCREEN*/
 const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2)
-    .required("username is required"),
+  username: Yup.string().required("username is required"),
   email: Yup.string()
     .email()
     .required("Email is required"),
-  password: Yup.string()
-    .required("Password is required")
-    .min(6)
+  password: Yup.string().required("Password is required")
 });
 const Signup = () => {
   console.log("ref changed");
@@ -23,14 +20,17 @@ const Signup = () => {
         initialValues={{ email: "", username: "", password: "" }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          console.log("submitted form");
+          console.log("submitted signup");
           setSubmitting(true);
+
           //MAKE API CALL TO CHECK IF THE USERNAME IS ALREADY IN USE
-          setTimeout(() => {
-            console.log(values);
-            setSubmitting(false);
-            resetForm();
-          }, 500);
+          axios
+            .post("http://localhost:5000/user/signup", values)
+            .then(response => console.log(response, "repsonse from server"));
+          // setTimeout(() => {
+          //   setSubmitting(false);
+          //   resetForm();
+          // }, 500);
         }}
       >
         {({
@@ -42,7 +42,11 @@ const Signup = () => {
           handleSubmit,
           isSubmitting
         }) => (
-          <form id="signupForm" className={classes.Form}>
+          <form
+            id="signupForm"
+            className={classes.Form}
+            onSubmit={handleSubmit}
+          >
             <input
               type="text"
               name="email"
@@ -74,7 +78,7 @@ const Signup = () => {
             />
             <Error touched={touched.password} message={errors.password} />
             <button
-              disabled={isSubmitting || !values.password}
+              disabled={isSubmitting}
               type="submit"
               className={classes.SubmitButton}
             >

@@ -3,6 +3,8 @@ const cors = require("cors");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+const userRoutes = require("./src/routes/user");
+var bodyParser = require("body-parser");
 require("dotenv").config();
 const app = express();
 
@@ -32,7 +34,10 @@ app.use((req, res, next) => {
   }
   next();
 });
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
+app.use("/user", userRoutes);
 app.use((req, res, next) => {
   const error = new Error("Not found");
   error.status = 404;

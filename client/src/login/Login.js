@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import classes from "./Login.module.css";
 import Signup from "../signup/Signup";
 import Error from "../signInError/SignInError";
+import axios from "axios";
 const validationSchema = Yup.object().shape({
   username: Yup.string().required("Username is required"),
   password: Yup.string().required("Password is required")
@@ -30,11 +31,15 @@ const Login = () => {
         setSubmitting(true);
 
         //MAKE API CALL TO CHECK IF THE USERNAME IS ALREADY IN USE
-        setTimeout(() => {
-          setSubmitting(false);
-          resetForm();
-        }, 500);
+        axios
+          .post("http://localhost:5000/user/signup", values)
+          .then(response => console.log(response, "repsonse from server"));
+        // setTimeout(() => {
+        //   setSubmitting(false);
+        //   resetForm();
+        // }, 500);
       }}
+      validator={() => ({})}
     >
       {({
         values,
@@ -64,7 +69,11 @@ const Login = () => {
                 sign up
               </button>
             </div>
-            <form id="loginForm" className={classes.Form}>
+            <form
+              id="loginForm"
+              className={classes.Form}
+              onSubmit={handleSubmit}
+            >
               <input
                 type="text"
                 className={classes.InputField}
@@ -90,7 +99,7 @@ const Login = () => {
                 <span>remember password</span>
               </div>
               <button
-                disabled={isSubmitting || !touched.password}
+                disabled={isSubmitting}
                 type="submit"
                 className={classes.SubmitButton}
               >
