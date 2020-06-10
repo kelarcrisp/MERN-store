@@ -1,0 +1,65 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+.Button {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 110px;
+  height: 100%;
+  background: linear-gradient(to right, skyblue, skyblue);
+  border-radius: 30px;
+  transition: 0.5s;
+}
+.ButtonBox {
+  width: 220px;
+  margin: 35px auto;
+  position: relative;
+  box-shadow: 0 0 5px 9px skyblue;
+  border-radius: 30px;
+}
+
+.ToggleButton {
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+}
+
+.InputGroup {
+  top: 180px;
+  position: absolute;
+  width: 280px;
+  transition: 0.5s;
+}
+
+.InputField {
+  width: 80%;
+  padding: 10px 0px;
+  margin: 5px 0;
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid skyblue;
+  outline: none;
+  background: transparent;
+}
+.SubmitButton {
+  width: 85%;
+  padding: 10px 10px;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  background: skyblue;
+  border: 0;
+  outline: none;
+  border-radius: 30px;
+  margin-top: 20px;
+}
