@@ -21,25 +21,23 @@ const validationSchema = Yup.object().shape({
 });
 const Login = () => {
   const [showSignup, setShowSignup] = useState(false);
-  const loginRef = useRef(null);
-  const signupRef = useRef(null);
-  const toggleButton = useRef(null);
   useEffect(() => {
     if (showSignup) {
       document.querySelector("#loginForm").style.display = "none";
       document.querySelector("#signupForm").style.display = "flex";
+      document.querySelector("#Button").style.transform = "translateX(100%)";
     } else {
       document.querySelector("#signupForm").style.display = "none";
       document.querySelector("#loginForm").style.display = "flex";
+      document.querySelector("#Button").style.transform = "translateX(0%)";
     }
   }, [showSignup]);
   return (
     <div className={classes.LoginContainer}>
       <div className={classes.FormContainer}>
         <div className={classes.ButtonBox}>
-          <div className={classes.Button}></div>
+          <div id="Button" className={classes.Button}></div>
           <button
-            ref={toggleButton}
             className={classes.ToggleButton}
             type="button"
             onClick={() => setShowSignup(false)}
