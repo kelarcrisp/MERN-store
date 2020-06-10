@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 80%;
   align-items: center;
   justify-content: flex-start;
+  background-color: white;
+  border-radius: 10px;
 }
 .Button {
   top: 0;
@@ -31,13 +33,6 @@
   border: 0;
   outline: none;
   position: relative;
-}
-
-.InputGroup {
-  top: 180px;
-  position: absolute;
-  width: 280px;
-  transition: 0.5s;
 }
 
 .InputField {

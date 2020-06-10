@@ -1,0 +1,14 @@
+.FormMessageInvalid {
+  color: red;
+  font-size: 12px;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.FormMessageValid {
+  color: green;
+  font-size: 12px;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
