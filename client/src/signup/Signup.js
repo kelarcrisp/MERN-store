@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Signup.module.css";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -13,7 +13,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required")
 });
 const Signup = () => {
-  console.log("ref changed");
+  const [showError, setShowError] = useState(false);
   return (
     <>
       <Formik
@@ -26,7 +26,17 @@ const Signup = () => {
           //MAKE API CALL TO CHECK IF THE USERNAME IS ALREADY IN USE
           axios
             .post("http://localhost:5000/user/signup", values)
-            .then(response => console.log(response, "repsonse from server"));
+            .then(response => {
+              resetForm();
+              setSubmitting(false);
+              setShowError(false);
+              console.log(response, "repsonse from server");
+            })
+            .catch(err => {
+              setShowError(true);
+              setSubmitting(false);
+              console.log(err.message, "errrr in login");
+            });
           // setTimeout(() => {
           //   setSubmitting(false);
           //   resetForm();
@@ -77,6 +87,7 @@ const Signup = () => {
               onBlur={handleBlur}
             />
             <Error touched={touched.password} message={errors.password} />
+            {showError ? "this email is already in use" : null}
             <button
               disabled={isSubmitting}
               type="submit"

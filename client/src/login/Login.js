@@ -6,7 +6,7 @@ import Signup from "../signup/Signup";
 import Error from "../signInError/SignInError";
 import axios from "axios";
 const validationSchema = Yup.object().shape({
-  username: Yup.string().required("Username is required"),
+  email: Yup.string().required("Username is required"),
   password: Yup.string().required("Password is required")
 });
 const Login = () => {
@@ -24,7 +24,7 @@ const Login = () => {
   }, [showSignup]);
   return (
     <Formik
-      initialValues={{ username: "", password: "" }}
+      initialValues={{ email: "", password: "" }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         console.log("submitted login");
@@ -32,8 +32,15 @@ const Login = () => {
 
         //MAKE API CALL TO CHECK IF THE USERNAME IS ALREADY IN USE
         axios
-          .post("http://localhost:5000/user/signup", values)
-          .then(response => console.log(response, "repsonse from server"));
+          .post("http://localhost:5000/user/login", values)
+          .then(response => {
+            setSubmitting(false);
+            console.log(response, "repsonse from server");
+          })
+          .catch(err => {
+            setSubmitting(false);
+            console.log(err.message, "errrr in login");
+          });
         // setTimeout(() => {
         //   setSubmitting(false);
         //   resetForm();
@@ -77,13 +84,13 @@ const Login = () => {
               <input
                 type="text"
                 className={classes.InputField}
-                placeholder="username"
-                name="username"
+                placeholder="email"
+                name="email"
                 onChange={handleChange}
-                value={values.username}
+                value={values.email}
                 onBlur={handleBlur}
               />
-              <Error touched={touched.username} message={errors.username} />
+              <Error touched={touched.email} message={errors.email} />
               <input
                 type="text"
                 className={classes.InputField}
