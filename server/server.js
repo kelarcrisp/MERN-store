@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const userRoutes = require("./src/routes/user");
 var bodyParser = require("body-parser");
+const productRoutes = require("./src/routes/products");
 require("dotenv").config();
 const app = express();
 
@@ -17,7 +18,8 @@ const mongoDbUri = mongoose.connect(
 `,
   {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
   }
 );
 
@@ -38,6 +40,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/user", userRoutes);
+app.use("/products", productRoutes);
 app.use((req, res, next) => {
   const error = new Error("Not found");
   error.status = 404;

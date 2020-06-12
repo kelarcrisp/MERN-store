@@ -9,7 +9,10 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().required("Username is required"),
   password: Yup.string().required("Password is required")
 });
-const Login = () => {
+const Login = props => {
+  console.log(props, "props in login");
+  const { history } = props;
+
   const [showSignup, setShowSignup] = useState(false);
   useEffect(() => {
     if (showSignup) {
@@ -35,16 +38,14 @@ const Login = () => {
           .post("http://localhost:5000/user/login", values)
           .then(response => {
             setSubmitting(false);
+            resetForm(true);
+            history.replace("/products");
             console.log(response, "repsonse from server");
           })
           .catch(err => {
             setSubmitting(false);
             console.log(err.message, "errrr in login");
           });
-        // setTimeout(() => {
-        //   setSubmitting(false);
-        //   resetForm();
-        // }, 500);
       }}
       validator={() => ({})}
     >
