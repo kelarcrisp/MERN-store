@@ -1,0 +1,10 @@
+h2 {
+  text-align: center;
+}
+.OrderSummaryContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 35vh;
+}

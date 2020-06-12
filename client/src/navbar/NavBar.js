@@ -5,7 +5,7 @@ const NavBar = () => {
   const history = useHistory();
   const signout = () => {
     localStorage.removeItem("jwt-token");
-    history.push("/login");
+    history.push("/signin");
   };
   return (
     <div className={classes.NavBarContainer}>
