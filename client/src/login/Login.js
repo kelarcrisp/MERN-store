@@ -5,6 +5,7 @@ import classes from "./Login.module.css";
 import Signup from "../signup/Signup";
 import Error from "../signInError/SignInError";
 import axios from "axios";
+import { Spinner } from "../spinner/Spinner";
 const validationSchema = Yup.object().shape({
   email: Yup.string().required("Username is required"),
   password: Yup.string().required("Password is required")
@@ -40,14 +41,13 @@ const Login = props => {
             setSubmitting(false);
             resetForm(true);
             history.replace("/products");
-            console.log(response, "repsonse from server");
+            localStorage.setItem("jwt-token", response.data.token);
           })
           .catch(err => {
             setSubmitting(false);
             console.log(err.message, "errrr in login");
           });
       }}
-      validator={() => ({})}
     >
       {({
         values,
@@ -59,6 +59,7 @@ const Login = props => {
         isSubmitting
       }) => (
         <div className={classes.LoginContainer}>
+          <h2 className={classes.LoginHeader}>Kelar's amazing starbucks</h2>
           <div className={classes.FormContainer}>
             <div className={classes.ButtonBox}>
               <div id="Button" className={classes.Button}></div>
@@ -106,13 +107,17 @@ const Login = props => {
                 <input type="checkbox" className={classes.CheckBox} />
                 <span>remember password</span>
               </div>
-              <button
-                disabled={isSubmitting}
-                type="submit"
-                className={classes.SubmitButton}
-              >
-                sign in
-              </button>
+              {!isSubmitting ? (
+                <button
+                  disabled={isSubmitting}
+                  type="submit"
+                  className={classes.SubmitButton}
+                >
+                  sign in
+                </button>
+              ) : (
+                <Spinner />
+              )}
             </form>
             <Signup />
           </div>

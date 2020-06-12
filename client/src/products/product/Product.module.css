@@ -1,0 +1,12 @@
+.ProductContainer {
+  margin: 24px;
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.ProductContainer button {
+  margin-bottom: 12px;
+}

@@ -7,6 +7,7 @@ const csv = fs.createReadStream(__dirname + "/coffee-csv.csv");
 
 let parseddata;
 Papa.parse(csv, {
+  header: true,
   complete: function(results) {
     // console.log("Finished:", results);
     parseddata = results;

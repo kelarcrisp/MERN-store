@@ -8,7 +8,11 @@
   align-items: center;
   position: relative;
 }
-
+.LoginHeader {
+  position: absolute;
+  color: white;
+  top: 50px;
+}
 .FormContainer {
   position: absolute;
   width: 30%;
@@ -92,4 +96,9 @@
 }
 span {
   color: skyblue;
+}
+@media (max-width: 750px) {
+  .FormContainer {
+    width: 60%;
+  }
 }

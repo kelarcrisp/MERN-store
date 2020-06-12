@@ -1,0 +1,26 @@
+.NavBarContainer {
+  display: flex;
+  height: 12vh;
+  background-color: skyblue;
+  border-bottom: 1px solid black;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+}
+.NavBarLinks {
+  display: flex;
+  cursor: pointer;
+}
+.NavBarLink {
+  padding: 0.5rem;
+  text-decoration: none;
+  color: black;
+  padding-right: 16px;
+}
+
+.NavBarSignOut {
+  border-radius: 5px;
+}
+.NavBarLink:hover {
+  color: white;
+}

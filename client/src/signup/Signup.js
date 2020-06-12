@@ -37,10 +37,6 @@ const Signup = () => {
               setSubmitting(false);
               console.log(err.message, "errrr in login");
             });
-          // setTimeout(() => {
-          //   setSubmitting(false);
-          //   resetForm();
-          // }, 500);
         }}
       >
         {({
@@ -78,7 +74,7 @@ const Signup = () => {
             />
             <Error touched={touched.username} message={errors.username} />
             <input
-              type="text"
+              type="password"
               name="password"
               className={classes.InputField}
               placeholder="password"
