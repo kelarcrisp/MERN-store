@@ -9,7 +9,7 @@ const Products = props => {
   const { history } = props;
   const { newestState, dispatch } = useContext(ProductContext);
 
-  const [howManyToLoad, setHowManyToLoad] = useState(10);
+  const [howManyToLoad, setHowManyToLoad] = useState(8);
   console.log(props, "newtest state");
   useEffect(() => {
     const jwt = getJwt();
@@ -44,8 +44,8 @@ const Products = props => {
           />
         ))}
         <button
-          style={{ width: "80%", marginLeft: "10%" }}
-          onClick={() => setHowManyToLoad(last => last + 10)}
+          style={{ width: "80%", marginLeft: "10%", marginTop: "1rem" }}
+          onClick={() => setHowManyToLoad(last => last + 8)}
         >
           load more
         </button>

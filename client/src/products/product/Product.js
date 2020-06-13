@@ -9,8 +9,8 @@ const Product = React.memo(
         <div className={classes.ProductContainer}>
           <div className={classes.ProductName}>{productName}</div>
           <img src={image} />
-          <p>{brandName}</p>
-          <p style={{ color: "red" }}>${price}</p>
+          <p style={{ padding: 0, margin: 0 }}>{brandName}</p>
+          <span style={{ color: "red", padding: 0, margin: 0 }}>${price}</span>
         </div>
       </Link>
     );
