@@ -1,12 +1,40 @@
+.ProductContainerLink {
+  text-decoration: none;
+}
+
 .ProductContainer {
   margin: 24px;
-  border: 1px solid green;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: black;
 }
+.ProductName {
+  font-weight: 550;
+}
+.ProductName,
+.ProductDescription {
+  padding: 0 6px;
+}
+
 .ProductContainer button {
   margin-bottom: 12px;
+}
+@media (min-width: 500px) {
+  .ProductContainerLink {
+    width: 25%;
+    margin-top: 5rem;
+    margin-left: 7rem;
+  }
+  .ProductContainer {
+    border: none;
+    align-items: center;
+  }
+  .ProductDescription:hover {
+    color: orange;
+    text-decoration: underline;
+  }
 }

@@ -13,12 +13,29 @@ Papa.parse(csv, {
     parseddata = results;
   }
 });
-
 router.get("/", (req, res, next) => {
-  console.log(typeof data);
-  res.status(200).json({
-    message: "all coffee",
-    data: parseddata.data
-  });
+  try {
+    res.status(200).json({
+      message: "all coffee",
+      data: parseddata.data.slice(0, 200)
+    });
+  } catch (err) {
+    res.status(404).json({
+      error: err
+    });
+  }
+});
+
+router.get("/:productId", (req, res, next) => {
+  const reqId = req.params.productId;
+  const dataToSend = parseddata.data.find(product => product.UPC === reqId);
+  try {
+    res.status(200).json({
+      message: "message",
+      data: dataToSend
+    });
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
 });
 module.exports = router;

@@ -2,7 +2,8 @@ import React, { createContext, useReducer } from "react";
 
 export const ProductContext = createContext();
 const initialState = {
-  products: []
+  products: [],
+  singleProduct: []
 };
 
 const productReducer = (state, action) => {
@@ -11,6 +12,11 @@ const productReducer = (state, action) => {
       return {
         ...initialState,
         products: action.payload.allProducts
+      };
+    case "ADD_SINGLE_PRODUCT":
+      return {
+        ...initialState,
+        singleProduct: action.payload.singleProduct
       };
   }
 };

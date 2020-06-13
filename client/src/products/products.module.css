@@ -1,0 +1,6 @@
+@media (min-width: 500px) {
+  .ProductsContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
