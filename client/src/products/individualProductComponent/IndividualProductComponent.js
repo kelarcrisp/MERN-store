@@ -11,7 +11,6 @@ const IndividualProductComponent = () => {
 
   const idToFind = history.location.pathname.split("/")[2];
   useEffect(() => {
-    console.log(newestState, "neweststae");
     axios
       .get(`http://localhost:5000/products/${idToFind}`)
       .then(result => {
@@ -49,13 +48,17 @@ const IndividualProductComponent = () => {
       <NavBar />
       <button onClick={goBack}>go back</button>
       <div className={classes.IndividualProductContainer}>
-        <div>{newestState.singleProduct.BrandName}</div>
+        <div>
+          {newestState.singleProduct.BrandName}{" "}
+          <div style={{ textAlign: "center" }}>
+            {newestState.singleProduct.SalePrice}
+          </div>
+        </div>
         <img src={newestState.singleProduct.Image} />
-        <div>{newestState.singleProduct.SalePrice}</div>
-        <div>{newestState.singleProduct.LongDesc}</div>
+
         <div className={classes.AddItemContainer}>
           <div style={{ textAlign: "center", marginBottom: "0.8rem" }}>
-            {localItems}
+            current item count - {localItems}
           </div>
           <button
             className={classes.AddItemButton}
@@ -67,6 +70,10 @@ const IndividualProductComponent = () => {
           <button className={classes.AddItemButton} onClick={handleAddToCart}>
             +
           </button>
+        </div>
+
+        <div className={classes.LongDesc}>
+          {newestState.singleProduct.LongDesc}
         </div>
       </div>
     </>

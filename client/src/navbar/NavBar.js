@@ -5,7 +5,6 @@ import { ProductContext } from "../context/ProductContext";
 const NavBar = () => {
   const history = useHistory();
   const { newestState, dispatch } = useContext(ProductContext);
-  console.log(newestState.cartProducts.length);
   const signout = () => {
     localStorage.removeItem("jwt-token");
     history.push("/signin");

@@ -8,8 +8,10 @@
 }
 
 .AddItemContainer {
-  color: black;
-  position: absolute;
-  top: 50%;
-  right: 30%;
+  margin: 0.75rem;
+}
+.LongDesc {
+  text-align: center;
+  margin-top: 1.5rem;
+  width: 60%;
 }

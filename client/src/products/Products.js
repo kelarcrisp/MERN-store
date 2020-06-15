@@ -10,7 +10,6 @@ const Products = props => {
   const { newestState, dispatch } = useContext(ProductContext);
 
   const [howManyToLoad, setHowManyToLoad] = useState(8);
-  console.log(props, "newtest state");
   useEffect(() => {
     const jwt = getJwt();
     if (!jwt) {
@@ -27,7 +26,6 @@ const Products = props => {
       })
       .catch(err => console.log(err.message));
   }, []);
-  console.log(newestState.products);
   return (
     <>
       <NavBar />
@@ -44,7 +42,12 @@ const Products = props => {
           />
         ))}
         <button
-          style={{ width: "80%", marginLeft: "10%", marginTop: "1rem" }}
+          style={{
+            width: "80%",
+            marginLeft: "10%",
+            marginTop: "1rem",
+            backgroundColor: "skyblue"
+          }}
           onClick={() => setHowManyToLoad(last => last + 8)}
         >
           load more

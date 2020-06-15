@@ -9,15 +9,6 @@ import Checkout from "./checkout/Checkout";
 import { ProductContextProvider } from "./context/ProductContext";
 import IndividualProductComponent from "./products/individualProductComponent/IndividualProductComponent";
 function App() {
-  const [authorized, setAuthorized] = useState(false);
-  // localStorage.setItem("test", "test");
-  // useEffect(() => {
-  //   let jwt = getJwt();
-  //   if (jwt) {
-  //     console.log(jwt);
-  //     setAuthorized(true);
-  //   }
-  // }, []);
   return (
     <BrowserRouter>
       <>

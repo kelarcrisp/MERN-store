@@ -11,10 +11,10 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required")
 });
 const Login = props => {
-  console.log(props, "props in login");
   const { history } = props;
 
   const [showSignup, setShowSignup] = useState(false);
+  const [showError, setShowError] = useState(false);
   useEffect(() => {
     if (showSignup) {
       document.querySelector("#loginForm").style.display = "none";
@@ -31,7 +31,6 @@ const Login = props => {
       initialValues={{ email: "", password: "" }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        console.log("submitted login");
         setSubmitting(true);
 
         //MAKE API CALL TO CHECK IF THE USERNAME IS ALREADY IN USE
@@ -41,11 +40,12 @@ const Login = props => {
             setSubmitting(false);
             resetForm(true);
             history.replace("/products");
+            setShowError(false);
             localStorage.setItem("jwt-token", response.data.token);
           })
           .catch(err => {
             setSubmitting(false);
-            console.log(err.message, "errrr in login");
+            setShowError(true);
           });
       }}
     >
@@ -107,6 +107,7 @@ const Login = props => {
                 <input type="checkbox" className={classes.CheckBox} />
                 <span>remember password</span>
               </div>
+              {showError ? "invalid username or password" : ""}
               {!isSubmitting ? (
                 <button
                   disabled={isSubmitting}

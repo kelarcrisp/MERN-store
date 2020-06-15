@@ -7,8 +7,6 @@ const OrderSummary = () => {
   const newestStateUnique = Array.from(
     new Set(newestState.cartProducts.map(JSON.stringify))
   ).map(JSON.parse);
-  console.log(newestStateUnique, "newst in chedckout");
-  console.log(newestState.cartProducts);
 
   const totalPrice = newestState.cartProducts
     .map(product => product.SalePrice)
@@ -19,7 +17,6 @@ const OrderSummary = () => {
   const uniqueObj = {};
 
   const mapped = newestState.cartProducts.forEach(product => {
-    console.log(product);
     uniqueObj[product.UPC] = (uniqueObj[product.UPC] || 0) + 1;
   });
 

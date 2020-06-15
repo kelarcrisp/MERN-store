@@ -4,7 +4,8 @@ export const ProductContext = createContext();
 const initialState = {
   products: [],
   singleProduct: {},
-  cartProducts: []
+  cartProducts: [],
+  checkoutComplete: false
 };
 
 const productReducer = (state, action) => {
@@ -30,6 +31,17 @@ const productReducer = (state, action) => {
       return {
         ...state,
         cartProducts: state.cartProducts.slice(0, state.cartProducts.length - 1)
+      };
+    case "CHECKOUT_COMPLETE":
+      return {
+        ...state,
+        cartProducts: [],
+        checkoutComplete: !state.checkoutComplete
+      };
+    case "CHECKOUT_COMPLETE_GO_BACK":
+      return {
+        ...state,
+        checkoutComplete: false
       };
   }
 };
