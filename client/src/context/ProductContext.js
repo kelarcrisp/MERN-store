@@ -3,20 +3,33 @@ import React, { createContext, useReducer } from "react";
 export const ProductContext = createContext();
 const initialState = {
   products: [],
-  singleProduct: []
+  singleProduct: {},
+  cartProducts: []
 };
 
 const productReducer = (state, action) => {
   switch (action.type) {
     case "ADD_ALL_PRODUCTS":
       return {
-        ...initialState,
+        ...state,
         products: action.payload.allProducts
       };
     case "ADD_SINGLE_PRODUCT":
       return {
-        ...initialState,
+        ...state,
         singleProduct: action.payload.singleProduct
+      };
+
+    //////COME BACK TO THIS AND FIX THE TWO MEHTODS BELOW
+    case "ADD_CHECKOUT_PRODUCTS":
+      return {
+        ...state,
+        cartProducts: [...state.cartProducts, action.payload.newProducts]
+      };
+    case "SUBTRACT_CHECKOUT_PRODUCTS":
+      return {
+        ...state,
+        cartProducts: state.cartProducts.slice(0, state.cartProducts.length - 1)
       };
   }
 };

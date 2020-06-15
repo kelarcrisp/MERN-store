@@ -11,11 +11,25 @@
   display: flex;
   cursor: pointer;
 }
-.NavBarLink {
+.NavBarCheckout {
   padding: 0.5rem;
   text-decoration: none;
   color: black;
   padding-right: 16px;
+  position: relative;
+}
+
+.NavBarCheckout::before {
+  position: absolute;
+  content: "" attr(checkout-length);
+  width: 24px;
+  height: 24px;
+  background-color: red;
+  top: -12px;
+  right: 1.5rem;
+  border-radius: 50%;
+  line-height: 24px;
+  text-align: center;
 }
 
 .NavBarSignOut {
