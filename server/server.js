@@ -14,7 +14,8 @@ app.use(morgan("tiny"));
 // app.use(bodyParser.json());
 
 const mongoDbUri = mongoose.connect(
-  `mongodb+srv://kelar:${process.env.DB_PASSWORD}@store-o4whr.mongodb.net/store?retryWrites=true&w=majority
+  process.env.MONGODB_URI ||
+    `mongodb+srv://kelar:${process.env.DB_PASSWORD}@store-o4whr.mongodb.net/store?retryWrites=true&w=majority
 `,
   {
     useNewUrlParser: true,
@@ -56,7 +57,12 @@ app.use("/products", productRoutes);
 //   });
 // });
 
-app.listen(process.env.PORT, () => {
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("../client/build"));
+}
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
   console.log(`running on port ${process.env.PORT}`);
 });
 
