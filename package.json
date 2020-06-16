@@ -2,13 +2,17 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
+  "engine": {
+    "node": "13.11.0",
+    "npm": "6.13.7"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm run build",
     "dev": "nodemon server.js",
     "install-client": "cd client && npm install",
     "client": "cd client && npm start",
-    "heroku-postbuild": "npm run install-client && npm run build",
+    "heroku-postbuild": " NPM_CONFIG_PRODUCTION=false npm run install-client && npm run build",
     "start": "node server.js"
   },
   "keywords": [],

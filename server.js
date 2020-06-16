@@ -7,10 +7,7 @@ var bodyParser = require("body-parser");
 const productRoutes = require("./src/routes/products");
 require("dotenv").config();
 const app = express();
-//for heroku
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+
 app.use(morgan("tiny"));
 // app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
@@ -44,6 +41,15 @@ app.use(bodyParser.json());
 
 app.use("/user", userRoutes);
 app.use("/products", productRoutes);
+
+//for heroku
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 // app.use((req, res, next) => {
 //   const error = new Error("Not found");
 //   error.status = 404;
