@@ -8,8 +8,9 @@ var bodyParser = require("body-parser");
 const productRoutes = require("./src/routes/products");
 require("dotenv").config();
 const app = express();
+//for heroku
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("../client/build"));
+  app.use(express.static("client/build"));
 }
 app.use(morgan("tiny"));
 // app.use(bodyParser.urlencoded({ extended: false }));
