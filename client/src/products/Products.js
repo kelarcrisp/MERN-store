@@ -16,7 +16,7 @@ const Products = props => {
       history.push("/login");
     }
     axios
-      .get("http://localhost:5000/products")
+      .get("/api/products")
       .then(result => {
         const cleanedData = result.data.data.slice(0, 200);
         dispatch({

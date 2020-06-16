@@ -25,7 +25,7 @@ const Signup = () => {
 
           //MAKE API CALL TO CHECK IF THE USERNAME IS ALREADY IN USE
           axios
-            .post("/user/signup", values)
+            .post("/api/user/signup", values)
             .then(response => {
               resetForm();
               setSubmitting(false);
