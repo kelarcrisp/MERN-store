@@ -8,7 +8,9 @@ var bodyParser = require("body-parser");
 const productRoutes = require("./src/routes/products");
 require("dotenv").config();
 const app = express();
-
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("../client/build"));
+}
 app.use(morgan("tiny"));
 // app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
@@ -56,10 +58,6 @@ app.use("/products", productRoutes);
 //     }
 //   });
 // });
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("../client/build"));
-}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
