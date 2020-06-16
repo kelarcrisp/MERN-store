@@ -8,11 +8,15 @@ const IndividualProductComponent = () => {
   const { newestState, dispatch } = useContext(ProductContext);
   const [localItems, setLocalItems] = useState(0);
   const history = useHistory();
-
+  const runningWhere = process.env.NODE_ENV;
   const idToFind = history.location.pathname.split("/")[2];
   useEffect(() => {
     axios
-      .get(`/products/${idToFind}`)
+      .get(
+        runningWhere === "development"
+          ? "http://localhost:5000/api/products/" + idToFind
+          : "/api/products/" + idToFind
+      )
       .then(result => {
         dispatch({
           type: "ADD_SINGLE_PRODUCT",

@@ -12,7 +12,7 @@ const validationSchema = Yup.object().shape({
 });
 const Login = props => {
   const { history } = props;
-
+  const runningWhere = process.env.NODE_ENV;
   const [showSignup, setShowSignup] = useState(false);
   const [showError, setShowError] = useState(false);
   useEffect(() => {
@@ -35,7 +35,12 @@ const Login = props => {
 
         //MAKE API CALL TO CHECK IF THE USERNAME IS ALREADY IN USE
         axios
-          .post("api/user/login", values)
+          .post(
+            runningWhere === "development"
+              ? "http://localhost:5000/api/user/login"
+              : "/api/user/login",
+            values
+          )
           .then(response => {
             setSubmitting(false);
             resetForm(true);

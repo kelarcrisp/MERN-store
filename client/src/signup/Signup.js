@@ -14,18 +14,24 @@ const validationSchema = Yup.object().shape({
 });
 const Signup = () => {
   const [showError, setShowError] = useState(false);
+  const runningWhere = process.env.NODE_ENV;
   return (
     <>
       <Formik
         initialValues={{ email: "", username: "", password: "" }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          console.log("submitted signup");
+          console.log("submitted signup", values);
+          console.log(process.env.NODE_ENV, "node env");
           setSubmitting(true);
-
           //MAKE API CALL TO CHECK IF THE USERNAME IS ALREADY IN USE
           axios
-            .post("/api/user/signup", values)
+            .post(
+              runningWhere === "development"
+                ? "http://localhost:5000/api/user/signup"
+                : "/api/user/signup",
+              values
+            )
             .then(response => {
               resetForm();
               setSubmitting(false);

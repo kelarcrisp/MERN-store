@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+
 router.post("/signup", (req, res, next) => {
   console.log("hit the endpoint");
   //validating on email instead of username

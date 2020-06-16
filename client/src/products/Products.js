@@ -8,15 +8,21 @@ import { ProductContext } from "../context/ProductContext";
 const Products = props => {
   const { history } = props;
   const { newestState, dispatch } = useContext(ProductContext);
-
+  const runningWhere = process.env.NODE_ENV;
   const [howManyToLoad, setHowManyToLoad] = useState(8);
+
   useEffect(() => {
+    console.log(runningWhere, "in products");
     const jwt = getJwt();
     if (!jwt) {
       history.push("/login");
     }
     axios
-      .get("/api/products")
+      .get(
+        runningWhere === "development"
+          ? "http://localhost:5000/api/products"
+          : "/api/products"
+      )
       .then(result => {
         const cleanedData = result.data.data.slice(0, 200);
         dispatch({
@@ -26,6 +32,8 @@ const Products = props => {
       })
       .catch(err => console.log(err.message));
   }, []);
+
+  console.log(newestState.products);
   return (
     <>
       <NavBar />
