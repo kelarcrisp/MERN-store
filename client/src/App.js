@@ -22,7 +22,13 @@ function App() {
             <Route path="/products" exact component={Products} />
 
             <Route path="/checkout" exact component={Checkout} />
-            {/* <Redirect exact from="/" to="/signin" component={Login} /> */}
+            <Route
+              exact
+              path="/"
+              render={() =>
+                !getJwt() ? <Redirect to="/signin" /> : <Products />
+              }
+            />
           </ProductContextProvider>
         </Switch>
       </>

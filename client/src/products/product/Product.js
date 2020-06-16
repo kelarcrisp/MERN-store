@@ -5,10 +5,7 @@ const Product = React.memo(
   ({ image, sDescription, productName, brandName, upcId, price }) => {
     const history = useRouteMatch();
     return (
-      <Link
-        to={`/api/products/${upcId}`}
-        className={classes.ProductContainerLink}
-      >
+      <Link to={`/products/${upcId}`} className={classes.ProductContainerLink}>
         <div className={classes.ProductContainer}>
           <div className={classes.ProductName}>{productName}</div>
           <img src={image} />
