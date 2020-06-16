@@ -12,7 +12,7 @@ const IndividualProductComponent = () => {
   const idToFind = history.location.pathname.split("/")[2];
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/products/${idToFind}`)
+      .get(`/products/${idToFind}`)
       .then(result => {
         dispatch({
           type: "ADD_SINGLE_PRODUCT",

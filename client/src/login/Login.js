@@ -35,7 +35,7 @@ const Login = props => {
 
         //MAKE API CALL TO CHECK IF THE USERNAME IS ALREADY IN USE
         axios
-          .post("http://localhost:5000/user/login", values)
+          .post("user/login", values)
           .then(response => {
             setSubmitting(false);
             resetForm(true);
