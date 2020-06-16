@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const helmet = require("helmet");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const userRoutes = require("./src/routes/user");
