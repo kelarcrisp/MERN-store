@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import { maxHeaderSize } from "http";
 
 export const ProductContext = createContext();
 const initialState = {
@@ -23,9 +24,11 @@ const productReducer = (state, action) => {
 
     //////COME BACK TO THIS AND FIX THE TWO MEHTODS BELOW
     case "ADD_CHECKOUT_PRODUCTS":
+      console.log(state, "wooooooo in context");
       return {
         ...state,
-        cartProducts: [...state.cartProducts, action.payload.newProducts]
+        checkoutComplete: false,
+        cartProducts: [...action.payload.newProducts]
       };
     case "SUBTRACT_CHECKOUT_PRODUCTS":
       return {
@@ -42,6 +45,21 @@ const productReducer = (state, action) => {
       return {
         ...state,
         checkoutComplete: false
+      };
+    case "CHECKOUT_UPDATE_QUANITY":
+      const toKeep = state.cartProducts.filter(product => {
+        return product.UPC !== action.payload.upcId;
+      });
+      console.log(toKeep, "to keep before its deleted");
+      console.log(action.payload.newData, "paylaod before its deleted");
+      return {
+        ...state,
+        checkoutComplete: false,
+        cartProducts: [...action.payload.newData, ...toKeep]
+      };
+    default:
+      return {
+        ...state
       };
   }
 };

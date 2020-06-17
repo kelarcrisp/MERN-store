@@ -16,3 +16,7 @@ select,
 input {
   border: 1px solid black;
 }
+.SubmitFormButton {
+  color: white;
+  background-color: #1a62a3;
+}

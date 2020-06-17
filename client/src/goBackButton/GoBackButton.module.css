@@ -1,0 +1,11 @@
+.GoBackButton {
+  position: absolute;
+  right: 1rem;
+  color: white;
+  background-color: #1a62a3;
+  border: 1px solid#1a62a3;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 1em;
+  top: 1rem;
+}

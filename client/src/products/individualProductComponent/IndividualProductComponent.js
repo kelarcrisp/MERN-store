@@ -4,6 +4,7 @@ import { ProductContext } from "../../context/ProductContext";
 import classes from "./IndividualProductComponent.module.css";
 import NavBar from "../../navbar/NavBar";
 import axios from "axios";
+import GoBackButton from "../../goBackButton/GoBackButton";
 const IndividualProductComponent = () => {
   const { newestState, dispatch } = useContext(ProductContext);
   const [localItems, setLocalItems] = useState(0);
@@ -30,12 +31,21 @@ const IndividualProductComponent = () => {
     history.goBack();
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
+    const newCheckoutProduct = {
+      ...newestState.singleProduct,
+      checkoutId: newestState.singleProduct.UPC + 1
+    };
+    axios
+      .post(
+        runningWhere === "development"
+          ? "http://localhost:5000/api/userCart"
+          : "/api/products",
+        newCheckoutProduct
+      )
+      .then(result => console.log(result))
+      .catch(err => console.log("err in userCart"));
     setLocalItems(current => current + 1);
-    dispatch({
-      type: "ADD_CHECKOUT_PRODUCTS",
-      payload: { newProducts: newestState.singleProduct }
-    });
   };
 
   const handleSubtractFromCart = () => {
@@ -46,16 +56,17 @@ const IndividualProductComponent = () => {
       type: "SUBTRACT_CHECKOUT_PRODUCTS"
     });
   };
-
+  console.log(newestState.cartProducts);
   return (
     <>
       <NavBar />
-      <button onClick={goBack}>go back</button>
+
       <div className={classes.IndividualProductContainer}>
+        <GoBackButton goBack={goBack} />
         <div>
           {newestState.singleProduct.BrandName}{" "}
           <div style={{ textAlign: "center" }}>
-            {newestState.singleProduct.SalePrice}
+            ${newestState.singleProduct.SalePrice}
           </div>
         </div>
         <img src={newestState.singleProduct.Image} />

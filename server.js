@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const userRoutes = require("./src/routes/user");
 var bodyParser = require("body-parser");
 const productRoutes = require("./src/routes/products");
+const userCartRoutes = require("./src/routes/userCart");
 const path = require("path");
 require("dotenv").config();
 const app = express();
@@ -42,7 +43,7 @@ app.use(bodyParser.json());
 
 app.use("/api/user", userRoutes);
 app.use("/api/products", productRoutes);
-
+app.use("/api/userCart", userCartRoutes);
 //for heroku
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

@@ -109,7 +109,10 @@ const PaymentForm = () => {
                 placeholder="Cvc."
               />
               <Error touched={touched.cvc} message={errors.cvc} />
-              <button onClick={() => dispatch({ type: "CHECKOUT_COMPLETE" })}>
+              <button
+                className={classes.SubmitFormButton}
+                onClick={() => dispatch({ type: "CHECKOUT_COMPLETE" })}
+              >
                 Submit Form
               </button>
             </form>

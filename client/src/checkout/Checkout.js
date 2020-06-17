@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import PaymentForm from "./paymentForm/PaymentForm";
 import OrderSummary from "./orderSummary/OrderSummary";
 import classes from "./Checkout.module.css";
@@ -6,9 +6,13 @@ import { useHistory } from "react-router-dom";
 import NavBar from "../navbar/NavBar";
 import CheckoutComplete from "./checkoutComplete/CheckoutComplete";
 import { ProductContext } from "../context/ProductContext";
+import GoBackButton from "../goBackButton/GoBackButton";
+
 const Checkout = () => {
   const history = useHistory();
   const { newestState, dispatch } = useContext(ProductContext);
+  const runningWhere = process.env.NODE_ENV;
+  console.log(newestState, "in checkout");
   const goBack = () => {
     if (newestState.checkoutComplete) {
       dispatch({ type: "CHECKOUT_COMPLETE_GO_BACK" });
@@ -19,10 +23,12 @@ const Checkout = () => {
     <>
       <div>
         <NavBar />
-        <button onClick={goBack}>Go back</button>
-        <div className={classes.CheckoutContainer}>
+        <OrderSummary />
+        <PaymentForm />
+        {/* <div className={classes.CheckoutContainer}>
+          <GoBackButton goBack={goBack} />
           <div className={classes.CheckoutInfoContainer}>
-            {newestState.checkoutComplete === false ? (
+            {!newestState.checkoutComplete ? (
               <div>
                 {" "}
                 <OrderSummary />
@@ -32,7 +38,7 @@ const Checkout = () => {
               <CheckoutComplete />
             )}
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

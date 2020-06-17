@@ -1,11 +1,18 @@
 .NavBarContainer {
   display: flex;
   height: 12vh;
-  background-color: skyblue;
+  background-color: #1a62a3;
   border-bottom: 1px solid black;
   align-items: center;
   justify-content: space-between;
   padding: 0 1.25rem;
+  color: white;
+}
+.Title {
+  /* margin-left: 6rem; */
+  position: absolute; /* new */
+  left: 50%;
+  transform: translateX(-50%);
 }
 .NavBarLinks {
   display: flex;
@@ -14,9 +21,12 @@
 .NavBarCheckout {
   padding: 0.5rem;
   text-decoration: none;
-  color: black;
-  padding-right: 16px;
+  color: #1a62a3;
+  background-color: white;
   position: relative;
+  border-radius: 8px;
+  margin-right: 1rem;
+  font-size: 1em;
 }
 
 .NavBarCheckout::before {
@@ -24,17 +34,31 @@
   content: "" attr(checkout-length);
   width: 24px;
   height: 24px;
-  background-color: red;
-  top: -12px;
-  right: 1.5rem;
+  background-color: white;
+  top: -1.75rem;
+  right: 0.01rem;
   border-radius: 50%;
   line-height: 24px;
   text-align: center;
+  color: #1a62a3;
 }
 
 .NavBarSignOut {
   border-radius: 5px;
+  padding: 0.5rem;
+  border: none;
+  color: #1a62a3;
+  background-color: white;
+  font-size: 1em;
 }
 .NavBarLink:hover {
   color: white;
+}
+@media (max-width: 460px) {
+  .Title {
+    /* margin-left: 0; */
+    position: static;
+    margin: 0;
+    transform: translateX(0%);
+  }
 }

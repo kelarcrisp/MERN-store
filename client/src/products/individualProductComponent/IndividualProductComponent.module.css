@@ -1,10 +1,12 @@
 .IndividualProductContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 12px;
   position: relative;
+  background-color: white;
+  height: 100vh;
+  color: #1a62a3;
 }
 
 .AddItemContainer {
@@ -14,4 +16,23 @@
   text-align: center;
   margin-top: 1.5rem;
   width: 60%;
+}
+
+.AddItemText {
+  color: #1a62a3;
+}
+.AddItemButton {
+  color: #1a62a3;
+  line-height: 1rem;
+}
+
+.GoBackButton {
+  position: absolute;
+  right: 10px;
+  color: white;
+  background-color: #1a62a3;
+  border: 1px solid#1a62a3;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 1em;
 }

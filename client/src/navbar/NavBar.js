@@ -12,7 +12,7 @@ const NavBar = () => {
   return (
     <div className={classes.NavBarContainer}>
       <div>logo</div>
-      <h2> Kelar's starbucks</h2>
+      <h2 className={classes.Title}> Kelar's Koffee Shop</h2>
       <div className={classes.NavBarLinks}>
         <NavLink
           checkout-length={newestState.cartProducts.length}

@@ -3,10 +3,12 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+  color: #1a62a3;
+  position: relative;
 }
 
 .CheckoutInfoContainer {
   width: 80%;
-  border: 1px solid red;
+  /* border: 1px solid #1a62a3; */
   margin: 24px;
 }

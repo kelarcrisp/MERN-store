@@ -6,14 +6,17 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 35vh;
+  /* height: 35vh; */
+  height: 50%;
 }
 .OrderContainer {
   width: 80%;
   display: flex;
   flex-direction: column;
 }
-
+.QuantityDropDown {
+  max-width: 4rem;
+}
 .SingleOrderContainer {
   display: flex;
   justify-content: space-between;
