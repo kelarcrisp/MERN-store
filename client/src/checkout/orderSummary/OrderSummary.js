@@ -22,7 +22,9 @@ const OrderSummary = () => {
           payload: { newProducts: result.data.data }
         });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        throw error(err);
+      });
   }, []);
 
   const newestStateUnique = Array.from(

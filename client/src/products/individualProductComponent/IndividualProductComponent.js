@@ -24,7 +24,7 @@ const IndividualProductComponent = () => {
           payload: { singleProduct: result.data.data }
         });
       })
-      .catch(err => console.log(err));
+      .catch(err => null);
   }, [localItems]);
 
   const goBack = () => {
@@ -44,7 +44,7 @@ const IndividualProductComponent = () => {
         newCheckoutProduct
       )
       .then(result => {})
-      .catch(err => console.log("err in userCart"));
+      .catch(err => null);
     setLocalItems(current => current + 1);
     dispatch({
       type: "ADD_CHECKOUT_PRODUCTS",
@@ -60,7 +60,6 @@ const IndividualProductComponent = () => {
       type: "SUBTRACT_CHECKOUT_PRODUCTS"
     });
   };
-  console.log(newestState.cartProducts);
   return (
     <>
       <NavBar />
