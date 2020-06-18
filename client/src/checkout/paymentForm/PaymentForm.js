@@ -20,8 +20,8 @@ const validationSchema = Yup.object().shape({
 
 const PaymentForm = () => {
   const { newestState, dispatch } = useContext(ProductContext);
+  const runningWhere = process.env.NODE_ENV;
 
-  const handleSubmit = () => {};
   return (
     <>
       <h2>Payment Form</h2>
@@ -34,13 +34,26 @@ const PaymentForm = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          //MAKE API CALL TO CHECK IF THE USERNAME IS ALREADY IN USE
-          // axios
-          //   .post("http://localhost:5000/user/signup", values)
-          //   .then(response => {
-          //     resetForm();
-          //   })
-          //   .catch(err => {});
+          console.log(newestState.cartProducts, "in payment form");
+          dispatch({ type: "CHECKOUT_COMPLETE" });
+          axios
+            .delete(
+              runningWhere === "development"
+                ? "http://localhost:5000/api/userCart"
+                : "/api/userCart",
+              {
+                headers: {
+                  Authorization: "null"
+                },
+                data: {
+                  source: newestState.cartProducts
+                }
+              }
+            )
+            .then(result => {
+              console.log("result when payemnt form is submitted", result);
+            })
+            .catch(err => console.group(err, "err in payment form"));
         }}
       >
         {({
@@ -110,8 +123,9 @@ const PaymentForm = () => {
               />
               <Error touched={touched.cvc} message={errors.cvc} />
               <button
+                type="submit"
                 className={classes.SubmitFormButton}
-                onClick={() => dispatch({ type: "CHECKOUT_COMPLETE" })}
+                onClick={handleSubmit}
               >
                 Submit Form
               </button>

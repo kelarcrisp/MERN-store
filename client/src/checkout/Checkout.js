@@ -23,9 +23,9 @@ const Checkout = () => {
     <>
       <div>
         <NavBar />
-        <OrderSummary />
-        <PaymentForm />
-        {/* <div className={classes.CheckoutContainer}>
+        {/* <OrderSummary />
+        <PaymentForm /> */}
+        <div className={classes.CheckoutContainer}>
           <GoBackButton goBack={goBack} />
           <div className={classes.CheckoutInfoContainer}>
             {!newestState.checkoutComplete ? (
@@ -38,7 +38,7 @@ const Checkout = () => {
               <CheckoutComplete />
             )}
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );

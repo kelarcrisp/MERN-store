@@ -38,4 +38,17 @@ router.get("/", (req, res, next) => {
     });
 });
 
+router.delete("/", (req, res, next) => {
+  UserCart.deleteMany({})
+    .then(result => {
+      res.status(200).json({
+        message: "deleted all checkout products",
+        data: result
+      });
+    })
+    .catch(err => {
+      res.status(404).json({ error: err });
+    });
+});
+
 module.exports = router;
