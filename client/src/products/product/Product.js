@@ -3,7 +3,6 @@ import classes from "./Product.module.css";
 import { Link, useHistory, useLocation, useRouteMatch } from "react-router-dom";
 const Product = React.memo(
   ({ image, sDescription, productName, brandName, upcId, price }) => {
-    console.log(typeof price, "price");
     const history = useRouteMatch();
 
     return (

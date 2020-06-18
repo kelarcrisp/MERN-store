@@ -57,8 +57,6 @@ const productReducer = (state, action) => {
       const toKeep = state.cartProducts.filter(product => {
         return product.UPC !== action.payload.upcId;
       });
-      console.log(toKeep, "to keep before its deleted");
-      console.log(action.payload.newData, "paylaod before its deleted");
       return {
         ...state,
         checkoutComplete: false,

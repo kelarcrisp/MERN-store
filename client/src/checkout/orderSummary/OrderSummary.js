@@ -58,14 +58,12 @@ const OrderSummary = () => {
       }
     });
 
-    console.log(dataToContext, "data going to context");
     dispatch({
       type: "CHECKOUT_UPDATE_QUANITY",
       payload: { newData: dataToContext, upcId: upcId }
     });
   };
   useEffect(() => {}, [uniqueObj]);
-  // console.log([...filteredProducts, singleProduct], "whats going to context");
   return (
     <>
       <h2>Order Summary</h2>

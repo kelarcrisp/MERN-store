@@ -12,9 +12,7 @@ const Products = props => {
   const [howManyToLoad, setHowManyToLoad] = useState(8);
 
   useEffect(() => {
-    console.log(runningWhere, "in products");
     const jwt = getJwt();
-    console.log(jwt);
     if (!jwt) {
       history.push("/login");
     }
@@ -34,8 +32,6 @@ const Products = props => {
       })
       .catch(err => console.log(err.message));
   }, []);
-
-  console.log(newestState.products);
   return (
     <>
       <NavBar />

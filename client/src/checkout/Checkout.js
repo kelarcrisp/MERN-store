@@ -12,7 +12,6 @@ const Checkout = () => {
   const history = useHistory();
   const { newestState, dispatch } = useContext(ProductContext);
   const runningWhere = process.env.NODE_ENV;
-  console.log(newestState, "in checkout");
   const goBack = () => {
     if (newestState.checkoutComplete) {
       dispatch({ type: "CHECKOUT_COMPLETE_GO_BACK" });

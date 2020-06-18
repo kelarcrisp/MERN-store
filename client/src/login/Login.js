@@ -42,7 +42,6 @@ const Login = props => {
             values
           )
           .then(response => {
-            console.log(response, "inlogin");
             setSubmitting(false);
             resetForm(true);
             history.replace("/products");
@@ -50,8 +49,6 @@ const Login = props => {
             localStorage.setItem("jwt-token", response.data.token);
           })
           .catch(err => {
-            console.log(values, "in error login");
-            console.log(err, "inlogin");
             setSubmitting(false);
             setShowError(true);
           });

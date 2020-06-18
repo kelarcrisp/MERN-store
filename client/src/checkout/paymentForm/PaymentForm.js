@@ -34,7 +34,6 @@ const PaymentForm = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          console.log(newestState.cartProducts, "in payment form");
           dispatch({ type: "CHECKOUT_COMPLETE" });
           axios
             .delete(
@@ -50,9 +49,7 @@ const PaymentForm = () => {
                 }
               }
             )
-            .then(result => {
-              console.log("result when payemnt form is submitted", result);
-            })
+            .then(result => {})
             .catch(err => console.group(err, "err in payment form"));
         }}
       >
