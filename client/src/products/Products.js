@@ -14,6 +14,7 @@ const Products = props => {
   useEffect(() => {
     console.log(runningWhere, "in products");
     const jwt = getJwt();
+    console.log(jwt);
     if (!jwt) {
       history.push("/login");
     }
@@ -21,7 +22,8 @@ const Products = props => {
       .get(
         runningWhere === "development"
           ? "http://localhost:5000/api/products"
-          : "/api/products"
+          : "/api/products",
+        { headers: { Authorization: jwt } }
       )
       .then(result => {
         const cleanedData = result.data.data.slice(0, 200);

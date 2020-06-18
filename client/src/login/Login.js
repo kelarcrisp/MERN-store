@@ -37,11 +37,12 @@ const Login = props => {
         axios
           .post(
             runningWhere === "development"
-              ? "http://localhost:5000/api/user/login"
-              : "/api/user/login",
+              ? "http://localhost:5000/api/user/signin"
+              : "/api/user/signin",
             values
           )
           .then(response => {
+            console.log(response, "inlogin");
             setSubmitting(false);
             resetForm(true);
             history.replace("/products");
@@ -49,6 +50,8 @@ const Login = props => {
             localStorage.setItem("jwt-token", response.data.token);
           })
           .catch(err => {
+            console.log(values, "in error login");
+            console.log(err, "inlogin");
             setSubmitting(false);
             setShowError(true);
           });
@@ -99,7 +102,7 @@ const Login = props => {
               />
               <Error touched={touched.email} message={errors.email} />
               <input
-                type="text"
+                type="password"
                 className={classes.InputField}
                 placeholder="password"
                 name="password"

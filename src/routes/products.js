@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const auth = require("../auth-middleware/check-auth");
 const fs = require("fs");
 const Papa = require("papaparse");
 const csv = fs.createReadStream(__dirname + "/coffee-csv.csv");
@@ -13,7 +13,7 @@ Papa.parse(csv, {
     parseddata = results;
   }
 });
-router.get("/", (req, res, next) => {
+router.get("/", auth, (req, res, next) => {
   try {
     res.status(200).json({
       message: "all coffee",

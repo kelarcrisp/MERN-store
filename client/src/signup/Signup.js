@@ -22,7 +22,7 @@ const Signup = () => {
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           console.log("submitted signup", values);
-          console.log(process.env.NODE_ENV, "node env");
+
           setSubmitting(true);
           //MAKE API CALL TO CHECK IF THE USERNAME IS ALREADY IN USE
           axios
@@ -36,12 +36,12 @@ const Signup = () => {
               resetForm();
               setSubmitting(false);
               setShowError(false);
-              console.log(response, "repsonse from server");
+              console.log(response, "repsonse from server in signin");
             })
             .catch(err => {
               setShowError(true);
               setSubmitting(false);
-              console.log(err.message, "errrr in login");
+              console.log(err.message, "errrr in signin");
             });
         }}
       >

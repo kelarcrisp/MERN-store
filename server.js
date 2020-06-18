@@ -7,6 +7,7 @@ var bodyParser = require("body-parser");
 const productRoutes = require("./src/routes/products");
 const userCartRoutes = require("./src/routes/userCart");
 const path = require("path");
+
 require("dotenv").config();
 const app = express();
 
