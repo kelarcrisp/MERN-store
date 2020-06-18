@@ -73,7 +73,7 @@ const OrderSummary = () => {
         <div className={classes.OrderContainer}>
           {newestStateUnique.map((p, index) => {
             return (
-              <div className={classes.SingleOrderContainer} key={p.UPC}>
+              <div className={classes.SingleOrderContainer} key={Math.random()}>
                 <select
                   onChange={event =>
                     itemQuantityUpdated(event, index, p, p.UPC)

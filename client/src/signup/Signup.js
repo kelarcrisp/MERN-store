@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Signup.module.css";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Error from "../signInError/SignInError";
 import axios from "axios";
+import { set } from "mongoose";
 /* NEED TO COME BACK TO THIS COMPONENT AND FIX THAT WHEN THE FORM IS SUBMITTED IT SHOULDNT TAKE YOU BACK TO THE LOGIN SCREEN*/
 const validationSchema = Yup.object().shape({
   username: Yup.string().required("username is required"),
@@ -14,7 +15,20 @@ const validationSchema = Yup.object().shape({
 });
 const Signup = () => {
   const [showError, setShowError] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const runningWhere = process.env.NODE_ENV;
+
+  let successTimeout;
+  if (showSuccess) {
+    successTimeout = setTimeout(() => {
+      setShowSuccess(false);
+    }, 2000);
+  }
+  useEffect(() => {
+    return () => {
+      clearTimeout(successTimeout);
+    };
+  }, []);
   return (
     <>
       <Formik
@@ -36,6 +50,7 @@ const Signup = () => {
               resetForm();
               setSubmitting(false);
               setShowError(false);
+              setShowSuccess(true);
               console.log(response, "repsonse from server in signin");
             })
             .catch(err => {
@@ -89,7 +104,14 @@ const Signup = () => {
               onBlur={handleBlur}
             />
             <Error touched={touched.password} message={errors.password} />
-            {showError ? "this email is already in use" : null}
+            <div style={{ color: "black" }}>
+              {showError && "this email is already in use"}
+            </div>
+            <div style={{ color: "black" }}>
+              {" "}
+              {showSuccess && "Your account has been created"}
+            </div>
+
             <button
               disabled={isSubmitting}
               type="submit"

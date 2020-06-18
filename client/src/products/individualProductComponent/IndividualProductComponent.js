@@ -43,9 +43,13 @@ const IndividualProductComponent = () => {
           : "/api/products",
         newCheckoutProduct
       )
-      .then(result => console.log(result))
+      .then(result => {})
       .catch(err => console.log("err in userCart"));
     setLocalItems(current => current + 1);
+    dispatch({
+      type: "ADD_CHECKOUT_PRODUCTS",
+      payload: { newProduct: newCheckoutProduct }
+    });
   };
 
   const handleSubtractFromCart = () => {

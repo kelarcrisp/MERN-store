@@ -24,12 +24,19 @@ const productReducer = (state, action) => {
 
     //////COME BACK TO THIS AND FIX THE TWO MEHTODS BELOW
     case "ADD_CHECKOUT_PRODUCTS":
-      console.log(state, "wooooooo in context");
-      return {
-        ...state,
-        checkoutComplete: false,
-        cartProducts: [...action.payload.newProducts]
-      };
+      if (action.payload.newProducts) {
+        return {
+          ...state,
+          checkoutComplete: false,
+          cartProducts: [...action.payload.newProducts]
+        };
+      } else {
+        return {
+          ...state,
+          cartProducts: [...state.cartProducts, action.payload.newProduct]
+        };
+      }
+
     case "SUBTRACT_CHECKOUT_PRODUCTS":
       return {
         ...state,
