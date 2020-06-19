@@ -30,7 +30,7 @@ const Products = props => {
           payload: { allProducts: cleanedData }
         });
       })
-      .catch(err => null));
+      .catch(err => null);
   }, []);
   return (
     <>
