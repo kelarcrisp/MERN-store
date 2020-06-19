@@ -19,6 +19,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const PaymentForm = () => {
+  //THIS IS THE EMAIL TO SEND TO THE SERVER AND ACTUALLY SEND AN EMAIL TO
+  const userEmail = JSON.parse(localStorage.getItem("jwt-token"));
   const { newestState, dispatch } = useContext(ProductContext);
   const runningWhere = process.env.NODE_ENV;
 
@@ -50,6 +52,25 @@ const PaymentForm = () => {
               }
             )
             .then(result => {})
+            .catch(err => console.group(err, "err in payment form"));
+
+          axios
+            .post(
+              runningWhere === "development"
+                ? "http://localhost:5000/api/sendEmail"
+                : "/api/sendEmail",
+              {
+                headers: {
+                  Authorization: "null"
+                },
+                data: {
+                  source: userEmail
+                }
+              }
+            )
+            .then(result => {
+              console.log(result, "in payment form");
+            })
             .catch(err => console.group(err, "err in payment form"));
         }}
       >

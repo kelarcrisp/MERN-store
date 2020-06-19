@@ -9,7 +9,6 @@ let parseddata;
 Papa.parse(csv, {
   header: true,
   complete: function(results) {
-    // console.log("Finished:", results);
     parseddata = results;
   }
 });

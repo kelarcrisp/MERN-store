@@ -43,10 +43,11 @@ const Login = props => {
           )
           .then(response => {
             setSubmitting(false);
+            console.log(response, "respons ein login");
             resetForm(true);
             history.replace("/products");
             setShowError(false);
-            localStorage.setItem("jwt-token", response.data.token);
+            localStorage.setItem("jwt-token", JSON.stringify(response.data));
           })
           .catch(err => {
             setSubmitting(false);
