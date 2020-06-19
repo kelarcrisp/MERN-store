@@ -23,7 +23,7 @@ const OrderSummary = () => {
         });
       })
       .catch(err => {
-        throw error(err);
+        return null;
       });
   }, []);
 
