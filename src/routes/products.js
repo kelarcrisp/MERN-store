@@ -12,7 +12,7 @@ Papa.parse(csv, {
     parseddata = results;
   }
 });
-router.get("/", auth, (req, res, next) => {
+router.get("/", (req, res, next) => {
   try {
     res.status(200).json({
       message: "all coffee",
