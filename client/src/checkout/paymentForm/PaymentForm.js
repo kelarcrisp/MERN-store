@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import Error from "../../signInError/SignInError";
 import { ProductContext } from "../../context/ProductContext";
-import Axios from "axios";
+import emailjs from "emailjs-com";
 const validationSchema = Yup.object().shape({
   cardNumber: Yup.string()
     .required()
@@ -21,7 +21,7 @@ const validationSchema = Yup.object().shape({
 
 const PaymentForm = () => {
   //THIS IS THE EMAIL TO SEND TO THE SERVER AND ACTUALLY SEND AN EMAIL TO
-  const userEmail = JSON.parse(localStorage.getItem("jwt-token"));
+  const userEmailFromStorage = JSON.parse(localStorage.getItem("jwt-token"));
   const { newestState, dispatch } = useContext(ProductContext);
   const runningWhere = process.env.NODE_ENV;
 
@@ -37,6 +37,19 @@ const PaymentForm = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
+          const emailToSend = {
+            from_name: "kelar",
+            to_name: userEmailFromStorage.email,
+            subject: "bluh",
+            message_html: "message"
+          };
+          const serviceId = "gmail";
+          const templateId = "paymenttemplate";
+          const userId = "user_dyzjhIcsAc5ZmpmGA2Kif";
+          emailjs
+            .send(serviceId, templateId, emailToSend, userId)
+            .then(res => "woo")
+            .catch(err => console.log(err, "err"));
           dispatch({ type: "CHECKOUT_COMPLETE" });
           const deletePost = axios.delete(
             runningWhere === "development"
@@ -52,21 +65,22 @@ const PaymentForm = () => {
             }
           );
 
-          const sendPost = axios.post(
-            runningWhere === "development"
-              ? "http://localhost:5000/api/sendEmail"
-              : "/api/sendEmail",
-            {
-              headers: {
-                Authorization: "null"
-              },
-              data: {
-                source: userEmail
-              }
-            }
-          );
+          // const sendPost = axios.post(
+          //   runningWhere === "development"
+          //     ? "http://localhost:5000/api/sendEmail"
+          //     : "/api/sendEmail",
+          //   {
+          //     headers: {
+          //       Authorization: "null"
+          //     },
+          //     data: {
+          //       source: userEmail
+          //     }
+          //   }
+          // );
+
           //CONFIRM THIS WORKS
-          axios.all([deletePost, sendPost]).then(
+          axios.all([deletePost]).then(
             axios.spread((...responses) => {
               const responseOne = responses[0];
               const responseTwo = responses[1];
@@ -85,7 +99,11 @@ const PaymentForm = () => {
           isSubmitting
         }) => (
           <div className={classes.PaymentFormContainer}>
-            <form className={classes.PaymentForm} onSubmit={handleSubmit}>
+            <form
+              className={classes.PaymentForm}
+              id="form"
+              onSubmit={handleSubmit}
+            >
               <label htmlFor="cardnumber">Card Number</label>
               <input
                 name="cardNumber"
