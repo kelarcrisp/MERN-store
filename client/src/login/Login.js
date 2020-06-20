@@ -43,7 +43,6 @@ const Login = props => {
           )
           .then(response => {
             setSubmitting(false);
-            console.log(response, "respons ein login");
             resetForm(true);
             history.replace("/products");
             setShowError(false);
