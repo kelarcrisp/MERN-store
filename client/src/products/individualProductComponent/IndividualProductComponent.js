@@ -40,7 +40,7 @@ const IndividualProductComponent = () => {
       .post(
         runningWhere === "development"
           ? "http://localhost:5000/api/userCart"
-          : "/api/products",
+          : "/api/userCart",
         newCheckoutProduct
       )
       .then(result => {})

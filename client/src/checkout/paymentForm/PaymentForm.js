@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import Error from "../../signInError/SignInError";
 import { ProductContext } from "../../context/ProductContext";
+import Axios from "axios";
 const validationSchema = Yup.object().shape({
   cardNumber: Yup.string()
     .required()
@@ -37,41 +38,41 @@ const PaymentForm = () => {
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           dispatch({ type: "CHECKOUT_COMPLETE" });
-          axios
-            .delete(
-              runningWhere === "development"
-                ? "http://localhost:5000/api/userCart"
-                : "/api/userCart",
-              {
-                headers: {
-                  Authorization: "null"
-                },
-                data: {
-                  source: newestState.cartProducts
-                }
+          const deletePost = axios.delete(
+            runningWhere === "development"
+              ? "http://localhost:5000/api/userCart"
+              : "/api/userCart",
+            {
+              headers: {
+                Authorization: "null"
+              },
+              data: {
+                source: newestState.cartProducts
               }
-            )
-            .then(result => {})
-            .catch(err => console.group(err, "err in payment form"));
+            }
+          );
 
-          axios
-            .post(
-              runningWhere === "development"
-                ? "http://localhost:5000/api/sendEmail"
-                : "/api/sendEmail",
-              {
-                headers: {
-                  Authorization: "null"
-                },
-                data: {
-                  source: userEmail
-                }
+          const sendPost = axios.post(
+            runningWhere === "development"
+              ? "http://localhost:5000/api/sendEmail"
+              : "/api/sendEmail",
+            {
+              headers: {
+                Authorization: "null"
+              },
+              data: {
+                source: userEmail
               }
-            )
-            .then(result => {
-              console.log(result, "in payment form");
+            }
+          );
+          //CONFIRM THIS WORKS
+          axios.all([deletePost, sendPost]).then(
+            axios.spread((...responses) => {
+              const responseOne = responses[0];
+              const responseTwo = responses[1];
+              console.log({ responseOne, responseTwo });
             })
-            .catch(err => console.group(err, "err in payment form"));
+          );
         }}
       >
         {({
