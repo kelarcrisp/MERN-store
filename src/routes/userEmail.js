@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../auth-middleware/check-auth");
-const nodemailer = require("nodemailer");
 router.post("/", (req, res, next) => {
   //this is the email to send the email to!
   const { email } = req.body.data.source;

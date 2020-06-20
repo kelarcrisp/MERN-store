@@ -51,42 +51,22 @@ const PaymentForm = () => {
             .then(res => "woo")
             .catch(err => console.log(err, "err"));
           dispatch({ type: "CHECKOUT_COMPLETE" });
-          const deletePost = axios.delete(
-            runningWhere === "development"
-              ? "http://localhost:5000/api/userCart"
-              : "/api/userCart",
-            {
-              headers: {
-                Authorization: "null"
-              },
-              data: {
-                source: newestState.cartProducts
+          const deletePost = axios
+            .delete(
+              runningWhere === "development"
+                ? "http://localhost:5000/api/userCart"
+                : "/api/userCart",
+              {
+                headers: {
+                  Authorization: "null"
+                },
+                data: {
+                  source: newestState.cartProducts
+                }
               }
-            }
-          );
-
-          // const sendPost = axios.post(
-          //   runningWhere === "development"
-          //     ? "http://localhost:5000/api/sendEmail"
-          //     : "/api/sendEmail",
-          //   {
-          //     headers: {
-          //       Authorization: "null"
-          //     },
-          //     data: {
-          //       source: userEmail
-          //     }
-          //   }
-          // );
-
-          //CONFIRM THIS WORKS
-          axios.all([deletePost]).then(
-            axios.spread((...responses) => {
-              const responseOne = responses[0];
-              const responseTwo = responses[1];
-              console.log({ responseOne, responseTwo });
-            })
-          );
+            )
+            .then(response => "wooo")
+            .catch(err => "woo");
         }}
       >
         {({
