@@ -7,7 +7,7 @@ router.post("/", (req, res, next) => {
   const { email } = req.body.data.source;
   const mailOptions = {
     from: "kelarcrisp@gmail.com",
-    to: "kelcrisp007@icloud.com",
+    to: email,
     subject: "your fake Kawffee",
     text: "dont worry you wont be charged -------- test"
   };
