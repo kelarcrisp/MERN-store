@@ -11,7 +11,7 @@ const OrderSummary = () => {
       .get(
         runningWhere === "development"
           ? "http://localhost:5000/api/userCart"
-          : "/api/products"
+          : "/api/userCart"
       )
       .then(result => {
         const filteredResult = result.data.data.forEach(result => {
