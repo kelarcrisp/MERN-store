@@ -12,6 +12,7 @@
   /* margin-left: 6rem; */
   position: absolute; /* new */
   left: 50%;
+  top: 1rem;
   transform: translateX(-50%);
 }
 .NavBarLinks {

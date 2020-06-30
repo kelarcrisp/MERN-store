@@ -19,11 +19,11 @@ const Login = props => {
     if (showSignup) {
       document.querySelector("#loginForm").style.display = "none";
       document.querySelector("#signupForm").style.display = "flex";
-      document.querySelector("#Button").style.transform = "translateX(100%)";
+      document.querySelector("#Button").style.transform = "translateX(102%)";
     } else {
       document.querySelector("#signupForm").style.display = "none";
       document.querySelector("#loginForm").style.display = "flex";
-      document.querySelector("#Button").style.transform = "translateX(0%)";
+      document.querySelector("#Button").style.transform = "translateX(-2%)";
     }
   }, [showSignup]);
   return (
@@ -64,7 +64,7 @@ const Login = props => {
         isSubmitting
       }) => (
         <div className={classes.LoginContainer}>
-          <h2 className={classes.LoginHeader}>Kelar's amazing starbucks</h2>
+          <h2 className={classes.LoginHeader}>Kelar's Koffee</h2>
           <div className={classes.FormContainer}>
             <div className={classes.ButtonBox}>
               <div id="Button" className={classes.Button}></div>
