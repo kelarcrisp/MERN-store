@@ -10,7 +10,7 @@
 }
 .Title {
   /* margin-left: 6rem; */
-  position: absolute; /* new */
+  position: absolute; /* n ew */
   left: 50%;
   top: 1rem;
   transform: translateX(-50%);
