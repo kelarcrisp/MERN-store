@@ -13,6 +13,8 @@
   position: absolute;
   color: white;
   top: 50px;
+  font-size: 3rem;
+  letter-spacing: 2.5px;
 }
 .FormContainer {
   position: absolute;
@@ -53,14 +55,14 @@
 }
 
 .ToggleButton {
-  padding: 10px 30px;
+  padding: 9px 30px;
   cursor: pointer;
   background: transparent;
   border: 0;
   outline: none;
   position: relative;
   font-size: 1rem;
-  font-weight: bolder;
+  letter-spacing: 0.5px;
 }
 
 .InputGroup {
@@ -92,7 +94,8 @@
   border-radius: 30px;
   margin-top: 20px;
   color: white;
-  font-size: 1rem;
+  font-size: 18px;
+  letter-spacing: 1px;
   font-weight: bolder;
 }
 

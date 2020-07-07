@@ -73,14 +73,14 @@ const Login = props => {
                 type="button"
                 onClick={() => setShowSignup(false)}
               >
-                log in
+                Log in
               </button>
               <button
                 className={classes.ToggleButton}
                 onClick={() => setShowSignup(true)}
                 type="button"
               >
-                sign up
+                Sign up
               </button>
             </div>
             <form
@@ -119,7 +119,7 @@ const Login = props => {
                   type="submit"
                   className={classes.SubmitButton}
                 >
-                  sign in
+                  Sign in
                 </button>
               ) : (
                 <Spinner />
