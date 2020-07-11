@@ -15,7 +15,7 @@
   position: absolute;
   width: 110px;
   height: 100%;
-  background: linear-gradient(to right, #1a62a3, #1a62a3);
+  background: linear-gradient(to right, #a8dadc, #a8dadc);
   border-radius: 30px;
   transition: 0.5s;
 }
@@ -23,7 +23,7 @@
   width: 220px;
   margin: 35px auto;
   position: relative;
-  box-shadow: 0 0 5px 9px #1a62a3;
+  box-shadow: 0 0 5px 9px #a8dadc;
   border-radius: 30px;
 }
 
@@ -43,7 +43,7 @@
   border-left: 0;
   border-top: 0;
   border-right: 0;
-  border-bottom: 1px solid #1a62a3;
+  border-bottom: 1px solid #a8dadc;
   outline: none;
   background: transparent;
 }
@@ -53,7 +53,7 @@
   cursor: pointer;
   display: block;
   margin: auto;
-  background: #1a62a3;
+  background: #a8dadc;
   border: 0;
   outline: none;
   border-radius: 30px;

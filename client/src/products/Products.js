@@ -52,9 +52,10 @@ const Products = props => {
             width: "80%",
             marginLeft: "10%",
             marginTop: "1rem",
-            backgroundColor: "#1a62a3",
+            backgroundColor: "#a8dadc",
             color: "white",
-            fontSize: "1.1em"
+            fontSize: "1.1em",
+            border: "#a8dadc"
           }}
           onClick={() => setHowManyToLoad(last => last + 8)}
         >

@@ -1,17 +1,17 @@
 .ProductContainerLink {
   text-decoration: none;
-  border-bottom: 1px solid #1a62a3;
+  border-bottom: 1px solid #1d3557;
 }
 
 .ProductContainer {
   margin: 24px;
-  border: 1px solid #1a62e3;
+  border: 1px solid #1d3557;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #1a62a3;
+  color: #1d3557;
 }
 .ProductName {
   font-weight: 550;

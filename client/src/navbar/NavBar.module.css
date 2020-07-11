@@ -1,12 +1,13 @@
 .NavBarContainer {
   display: flex;
   height: 12vh;
-  background-color: #1a62a3;
+  background-color: #a8dadc;
   border-bottom: 1px solid black;
   align-items: center;
   justify-content: space-between;
   padding: 0 1.25rem;
   color: white;
+  border: #a8dadc;
 }
 .Title {
   /* margin-left: 6rem; */
@@ -22,7 +23,7 @@
 .NavBarCheckout {
   padding: 0.5rem;
   text-decoration: none;
-  color: #1a62a3;
+  color: #1d3557;
   background-color: white;
   position: relative;
   border-radius: 8px;
@@ -41,14 +42,14 @@
   border-radius: 50%;
   line-height: 24px;
   text-align: center;
-  color: #1a62a3;
+  color: #1d3557;
 }
 
 .NavBarSignOut {
   border-radius: 5px;
   padding: 0.5rem;
   border: none;
-  color: #1a62a3;
+  color: #1d3557;
   background-color: white;
   font-size: 1em;
 }

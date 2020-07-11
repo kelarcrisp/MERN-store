@@ -11,7 +11,7 @@ const Product = React.memo(
           <div className={classes.ProductName}>{productName}</div>
           <img src={image} />
           <p style={{ padding: 0, margin: 0 }}>{brandName}</p>
-          <span style={{ color: "#1a62a3", padding: 0, margin: 0 }}>
+          <span style={{ color: "#1d3557", padding: 0, margin: 0 }}>
             ${price == "" ? " unknown" : price}
           </span>
         </div>

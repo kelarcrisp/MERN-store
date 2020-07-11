@@ -6,7 +6,7 @@
   position: relative;
   background-color: white;
   height: 100vh;
-  color: #1a62a3;
+  color: #1d3557;
 }
 
 .AddItemContainer {
@@ -19,10 +19,10 @@
 }
 
 .AddItemText {
-  color: #1a62a3;
+  color: #1d3557;
 }
 .AddItemButton {
-  color: #1a62a3;
+  color: #1d3557;
   line-height: 1rem;
 }
 
@@ -30,8 +30,8 @@
   position: absolute;
   right: 10px;
   color: white;
-  background-color: #1a62a3;
-  border: 1px solid#1a62a3;
+  background-color: #a8dadc;
+  border: 1px solid#a8dadc;
   border-radius: 5px;
   padding: 0.5rem;
   font-size: 1em;

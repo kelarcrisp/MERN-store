@@ -63,72 +63,72 @@ const Login = props => {
         handleSubmit,
         isSubmitting
       }) => (
-        <div className={classes.LoginContainer}>
-          <h2 className={classes.LoginHeader}>Kelar's Koffee</h2>
-          <div className={classes.FormContainer}>
-            <div className={classes.ButtonBox}>
-              <div id="Button" className={classes.Button}></div>
-              <button
-                className={classes.ToggleButton}
-                type="button"
-                onClick={() => setShowSignup(false)}
-              >
-                Log in
-              </button>
-              <button
-                className={classes.ToggleButton}
-                onClick={() => setShowSignup(true)}
-                type="button"
-              >
-                Sign up
-              </button>
-            </div>
-            <form
-              id="loginForm"
-              className={classes.Form}
-              onSubmit={handleSubmit}
-            >
-              <input
-                type="text"
-                className={classes.InputField}
-                placeholder="email"
-                name="email"
-                onChange={handleChange}
-                value={values.email}
-                onBlur={handleBlur}
-              />
-              <Error touched={touched.email} message={errors.email} />
-              <input
-                type="password"
-                className={classes.InputField}
-                placeholder="password"
-                name="password"
-                onChange={handleChange}
-                value={values.password}
-                onBlur={handleBlur}
-              />
-              <Error touched={touched.password} message={errors.password} />
-              <div className={classes.CheckBoxContainer}>
-                <input type="checkbox" className={classes.CheckBox} />
-                <span>remember password</span>
-              </div>
-              {showError ? "invalid username or password" : ""}
-              {!isSubmitting ? (
+          <div className={classes.LoginContainer}>
+            <h2 className={classes.LoginHeader}>Kelar's Koffee</h2>
+            <div className={classes.FormContainer}>
+              <div className={classes.ButtonBox}>
+                <div id="Button" className={classes.Button}></div>
                 <button
-                  disabled={isSubmitting}
-                  type="submit"
-                  className={classes.SubmitButton}
+                  className={classes.ToggleButton}
+                  type="button"
+                  onClick={() => setShowSignup(false)}
                 >
-                  Sign in
+                  Log in
+              </button>
+                <button
+                  className={classes.ToggleButton}
+                  onClick={() => setShowSignup(true)}
+                  type="button"
+                >
+                  Sign up
+              </button>
+              </div>
+              <form
+                id="loginForm"
+                className={classes.Form}
+                onSubmit={handleSubmit}
+              >
+                <input
+                  type="text"
+                  className={classes.InputField}
+                  placeholder="email"
+                  name="email"
+                  onChange={handleChange}
+                  value={values.email}
+                  onBlur={handleBlur}
+                />
+                <Error touched={touched.email} message={errors.email} />
+                <input
+                  type="password"
+                  className={classes.InputField}
+                  placeholder="password"
+                  name="password"
+                  onChange={handleChange}
+                  value={values.password}
+                  onBlur={handleBlur}
+                />
+                <Error touched={touched.password} message={errors.password} />
+                <div className={classes.CheckBoxContainer}>
+                  <input type="checkbox" className={classes.CheckBox} />
+                  <span>remember password</span>
+                </div>
+                {showError ? "invalid username or password" : ""}
+                {!isSubmitting ? (
+                  <button
+                    disabled={isSubmitting}
+                    type="submit"
+                    className={classes.SubmitButton}
+                  >
+                    Sign in
                 </button>
-              ) : (
-                <Spinner />
-              )}
-            </form>
-            <Signup />
+                ) : (
+                    <Spinner />
+                  )}
+              </form>
+              <Signup />
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </Formik>
   );
 };

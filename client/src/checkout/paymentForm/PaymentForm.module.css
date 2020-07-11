@@ -18,5 +18,6 @@ input {
 }
 .SubmitFormButton {
   color: white;
-  background-color: #1a62a3;
+  background-color: #a8dadc;
+  border: #a8dadc;
 }
